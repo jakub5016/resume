@@ -1,0 +1,23 @@
+.window {
+    margin: auto;
+    width: 60vw;
+    border: 3px solid black;
+    padding: 10px;
+    height: 80vh;
+}
+
+.character{
+    background-color: red;
+    height: 8vh;
+    width: 5vw;
+    position: relative;
+    top: 90%;
+}
+
+.enemy1{
+    background-color: blue;
+    /* height: 8vh;
+    width: 5vw; */
+    position: relative;
+    /* top: 5%;    */
+}
