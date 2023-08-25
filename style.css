@@ -16,11 +16,7 @@
 
 .enemy1{
     background-color: blue;
-    /* height: 8vh;
-    width: 5vw; */
     position: relative;
-    /* animation: moveAnimation 5s infinite ; */
-    /* top: 5%;    */
 }
 
 @keyframes moveAnimation {
