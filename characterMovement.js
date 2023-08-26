@@ -41,6 +41,7 @@ function animateCharacter(timestamp) {
     requestAnimationFrame(animateCharacter);
   } else {
     characterX = targetCharacterX;
+    followCharacter()
     isMoving = false;
   }
 }

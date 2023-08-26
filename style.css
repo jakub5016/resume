@@ -30,6 +30,7 @@
 }
 
 .bullet {
+  top: 90%;
   background-color: black;
   position: relative;
   height: 5vh;
