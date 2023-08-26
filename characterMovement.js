@@ -1,12 +1,13 @@
-const character = document.querySelector(".character")
-let isMoving = false; // Dodatkowa zmienna do śledzenia, czy gracz jest w trakcie ruchu
-
-
+const character = document.querySelector(".character");
+let isMoving = false;
 let characterX = 0;
-const step = 20;
+let targetCharacterX = 0; // Nowa zmienna przechowująca docelowe położenie postaci
+const step = window.innerWidth * 0.1;
+const animationDuration = 200; // Czas trwania animacji w milisekundach
+let animationStartTime = null;
 
 function moveCharacter(direction) {
-  if (isMoving) return; // Sprawdź, czy gracz nie jest już w trakcie ruchu
+  if (isMoving) return;
   isMoving = true;
 
   let newCharacterX = characterX;
@@ -22,13 +23,26 @@ function moveCharacter(direction) {
 
   // Sprawdź, czy nowe położenie mieści się na planszy
   if (newCharacterX >= 0 && newCharacterX <= window.innerWidth - 40) {
-    character.style.left = newCharacterX + 'px';
-    characterX = newCharacterX;
+    targetCharacterX = newCharacterX;
+    animationStartTime = null; // Zresetuj czas rozpoczęcia animacji
+    requestAnimationFrame(animateCharacter);
   }
+}
 
-  setTimeout(() => {
-    isMoving = false; // Ustaw isMoving na false po zakończeniu ruchu i animacji
-  }, 200); // Czas trwania animacji w milisekundach
+function animateCharacter(timestamp) {
+  if (!animationStartTime) animationStartTime = timestamp;
+  const elapsedTime = timestamp - animationStartTime;
+  const progress = Math.min(elapsedTime / animationDuration, 1); // Postęp animacji od 0 do 1
+
+  const currentPosition = characterX + (targetCharacterX - characterX) * progress;
+  character.style.left = currentPosition + 'px';
+
+  if (progress < 1) {
+    requestAnimationFrame(animateCharacter);
+  } else {
+    characterX = targetCharacterX;
+    isMoving = false;
+  }
 }
 
 document.addEventListener('keydown', (event) => {

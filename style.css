@@ -24,16 +24,14 @@
       transform: translateX(0);
     }
     50% {
-      transform: translateX(120px);
+      transform: translateX(30vw);
     }
 
 }
 
-@keyframes playerMovementRight {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-      transform: translateX(100px); /* Adjust this value according to your animation */
-  }
+.bullet {
+  background-color: black;
+  position: relative;
+  height: 5vh;
+  width: 2vw;
 }
