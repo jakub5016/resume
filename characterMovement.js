@@ -1,41 +1,42 @@
 const character = document.querySelector(".character");
-let isMoving = false;
+character.animationStartTime = null;
+character.animationDuration = 200;
+character.step = window.innerWidth * 0.1;
+character.isMoving = false;
+
 let characterX = 0;
 let targetCharacterX = 0; 
-const step = window.innerWidth * 0.1;
-const animationDuration = 200; 
-let animationStartTime = null;
 
 function moveCharacter(direction) {
-  if (isMoving) return;
-  isMoving = true;
+  if (character.isMoving) return;
+  character.isMoving = true;
 
   let newCharacterX = characterX;
 
   switch (direction) {
     case 'left':
-      newCharacterX -= step;
+      newCharacterX -= character.step;
       break;
     case 'right':
-      newCharacterX += step;
+      newCharacterX += character.step;
       break;
   }
 
   // Sprawdź, czy nowe położenie mieści się na planszy
   if (newCharacterX >= 0 && newCharacterX <= window.innerWidth*0.6) {
     targetCharacterX = newCharacterX;
-    animationStartTime = null; // Zresetuj czas rozpoczęcia animacji
+    character.animationStartTime = null; // Zresetuj czas rozpoczęcia animacji
     requestAnimationFrame(animateCharacter);
   }
   else{
-    isMoving = false;
+    character.isMoving = false;
   }
 }
 
 function animateCharacter(timestamp) {
-  if (!animationStartTime) animationStartTime = timestamp;
-  const elapsedTime = timestamp - animationStartTime;
-  const progress = Math.min(elapsedTime / animationDuration, 1); // Postęp animacji od 0 do 1
+  if (!character.animationStartTime) character.animationStartTime = timestamp;
+  const elapsedTime = timestamp - character.animationStartTime;
+  const progress = Math.min(elapsedTime / character.animationDuration, 1); // Postęp animacji od 0 do 1
 
   const currentPosition = characterX + (targetCharacterX - characterX) * progress;
   character.style.left = currentPosition + 'px';
@@ -45,7 +46,7 @@ function animateCharacter(timestamp) {
   } else {
     characterX = targetCharacterX;
     followCharacter()
-    isMoving = false;
+    character.isMoving = false;
   }
 }
 

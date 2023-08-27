@@ -1,6 +1,5 @@
 const enemies = document.getElementsByClassName("enemy1")
 const game = document.querySelector(".window");
-const player = document.querySelector(".character")
 
 function setUpEnemies(){
     const enemyTop = enemies[0].clientTop; // Pobierz początkową wartość top
