@@ -3,6 +3,7 @@ character.animationStartTime = null;
 character.animationDuration = 200;
 character.step = window.innerWidth * 0.1;
 character.isMoving = false;
+character.style.top = window.innerHeight * 0.7 + "px";
 
 let characterX = 0;
 let targetCharacterX = 0; 

@@ -13,6 +13,8 @@ function setUpEnemies(){
         enemies[index].style.top = enemyTop -  (enemies[index].clientHeight * index) + "px"
         enemies[index].style.animation = "moveAnimation 5s infinite"
     }
+    character.style.top = window.innerHeight * 0.7 + "px";
+    bullet.style.top = character.style.top
 }
 
 setUpEnemies();
