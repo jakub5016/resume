@@ -1,9 +1,9 @@
 const character = document.querySelector(".character");
 let isMoving = false;
 let characterX = 0;
-let targetCharacterX = 0; // Nowa zmienna przechowująca docelowe położenie postaci
+let targetCharacterX = 0; 
 const step = window.innerWidth * 0.1;
-const animationDuration = 200; // Czas trwania animacji w milisekundach
+const animationDuration = 200; 
 let animationStartTime = null;
 
 function moveCharacter(direction) {
@@ -22,10 +22,13 @@ function moveCharacter(direction) {
   }
 
   // Sprawdź, czy nowe położenie mieści się na planszy
-  if (newCharacterX >= 0 && newCharacterX <= window.innerWidth - 40) {
+  if (newCharacterX >= 0 && newCharacterX <= window.innerWidth*0.6) {
     targetCharacterX = newCharacterX;
     animationStartTime = null; // Zresetuj czas rozpoczęcia animacji
     requestAnimationFrame(animateCharacter);
+  }
+  else{
+    isMoving = false;
   }
 }
 
@@ -53,6 +56,9 @@ document.addEventListener('keydown', (event) => {
       break;
     case 'ArrowRight':
       moveCharacter('right');
+      break;
+    case 'ArrowUp':
+      shot();
       break;
   }
 });

@@ -14,5 +14,5 @@ function followCharacter() {
   
 
 function shot (){
-    
+    bullet.style.top = "100px"
 }
