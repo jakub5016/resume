@@ -1,3 +1,3 @@
 # Description
 
-My resume created using JavaScript and Bootstrap, WIP
+My resume created using JavaScript and Bootstrap
